@@ -27,8 +27,8 @@ ATSRC_PACKAGE_DOCLINK="http://www.gnu.org/software/libc/manual/html_node/index.h
 ATSRC_PACKAGE_RELFIXES=
 ATSRC_PACKAGE_STR_VER="${ATSRC_PACKAGE_NAME} ${ATSRC_PACKAGE_VER}"
 ATSRC_PACKAGE_PRE="test -d glibc-${ATSRC_PACKAGE_VER}-${ATSRC_PACKAGE_REV}"
-ATSRC_PACKAGE_CO=([0]="git clone git://sourceware.org/git/glibc.git")
-ATSRC_PACKAGE_GIT="git checkout -b glibc-${ATSRC_PACKAGE_VER}${ATSRC_PACKAGE_REV:+-${ATSRC_PACKAGE_REV}} ${ATSRC_PACKAGE_REV}"
+ATSRC_PACKAGE_CO=([0]="git clone git@github.ibm.com:murp/glibc.git")
+ATSRC_PACKAGE_GIT="git checkout -b glibc-${ATSRC_PACKAGE_VER}${ATSRC_PACKAGE_REV:+-${ATSRC_PACKAGE_REV}} origin/murphyp/ppc-ldbl-f128"
 ATSRC_PACKAGE_POST="mv glibc glibc-${ATSRC_PACKAGE_VER}${ATSRC_PACKAGE_REV:+-${ATSRC_PACKAGE_REV}}"
 ATSRC_PACKAGE_SRC=${AT_BASE}/sources/glibc-${ATSRC_PACKAGE_VER}${ATSRC_PACKAGE_REV:+-${ATSRC_PACKAGE_REV}}
 ATSRC_PACKAGE_WORK=${AT_WORK_PATH}/glibc
