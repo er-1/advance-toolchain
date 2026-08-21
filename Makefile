@@ -1147,20 +1147,20 @@ $(RCPTS)/deb.rcpt: $(RCPTS)/build.rcpt $(RCPTS)/distributed_scripts.rcpt
 	    echo "- Preparing the environment vars."; \
 	    { $(call deb_setenv); } &> \
 	        $(LOGS)/_$${AT_STEPID}-01_deb_setenv.log; \
-	    echo "- Preparing the filelist of included packages..."; \
-	    $(call runandlog,$(LOGS)/_$${AT_STEPID}-02_pkg_set_filelists.log, \
-	           $(UTILITIES_ROOT)/pkg_build_filelists.sh $(TARGET)); \
-	    if [[ $${ret} -ne 0 ]]; then \
-	        echo "Failed while creating file lists."; \
-	        exit 1; \
-	    fi; \
-	    echo "- Effectively build the requested DEBs..."; \
-	    $(call runandlog,$(LOGS)/_$${AT_STEPID}-03_pkg_build_deb.log, \
-	           $(UTILITIES_ROOT)/pkg_build_deb.sh); \
-	    if [[ $${ret} -ne 0 ]]; then \
-	        echo "Problem running pkg_build_deb.sh."; \
-	        exit 1; \
-	    fi; \
+           echo "- Preparing the filelist of included packages..."; \
+           $(call runandlog,$(LOGS)/_$${AT_STEPID}-02_pkg_set_filelists.log, \
+                  $(UTILITIES_ROOT)/pkg_build_filelists.sh $(TARGET)); \
+           if [[ $${ret} -ne 0 ]]; then \
+               echo "Failed while creating file lists."; \
+               exit 1; \
+           fi; \
+           echo "- Effectively build the requested DEBs..."; \
+           $(call runandlog,$(LOGS)/_$${AT_STEPID}-03_pkg_build_deb.log, \
+                  $(UTILITIES_ROOT)/pkg_build_deb.sh); \
+           if [[ $${ret} -ne 0 ]]; then \
+               echo "Problem running pkg_build_deb.sh."; \
+               exit 1; \
+           fi; \
 	    echo "Everything completed."; \
 	} &> $(LOGS)/_deb.log
 	@echo "$$($(TIME)) Completed DEB packages for $(AT_FULL_VER)"
